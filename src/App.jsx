@@ -1,3 +1,4 @@
+import Footer from "./components/Footer"
 import Header from "./components/Header"
 import HelpBtns from "./components/HelpBtn"
 import System from "./components/System"
@@ -21,6 +22,7 @@ function App() {
         <HelpBtns text="WARRANTY INFORMATION" link="warranty"/>
         <HelpBtns text="CONTACT SUPPORT" link="contact"/>
       </section>
+      <Footer />
     </>
   )
 }
