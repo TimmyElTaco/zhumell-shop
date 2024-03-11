@@ -1,8 +1,9 @@
 import express from 'express';
-import { obtenerTelescopes } from '../controllers/telescopesControllers.js';
+import { getTelescopes, getTelescope } from '../controllers/telescopesControllers.js';
 
 const router = express.Router();
 
-router.get('/', obtenerTelescopes);
+router.get('/', getTelescopes);
+router.get('/:id', getTelescope);
 
 export default router;
