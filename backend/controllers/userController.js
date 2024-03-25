@@ -13,15 +13,19 @@ export const log = async (req, res) => {
     if(await user.checkPassword(password)) {
         return res.json({ msg: 'Login success' });
     } else {
-        return res.status(400).json({ msg: 'Invalid credentials' });
+        return res.status(400).json({ msg: 'The email or the passwords are wrong' });
     }
 }
 
 export const register = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, passwordRepeat } = req.body;
     
     if([name, email, password].includes('')) {
         return res.status(400).json({ msg: 'Please complete all fields' });
+    }
+
+    if(password !== passwordRepeat) {
+        return res.status(400).json({ msg: 'The passwords are not the same' });
     }
 
     if(password.length < 6) {
@@ -35,17 +39,20 @@ export const register = async (req, res) => {
     }
 
     try {
+
         const newUser = new User({ name, email, password });
         await newUser.save();
         res.json({ msg: 'User created' });
+
     } catch (error) {
         res.status(500).json({ msg: 'Error creating user' });
     }
 }
 
+
+
 /*
-    TODO: 
-    - Add repeat password
+    TODO:
     - Add forgot password
     - Add token confirmation
     - Add email confirmation
