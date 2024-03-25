@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import generateConfirmToken from "../helpers/generateConfirmToken.js";
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -14,6 +15,14 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    token: {
+        type: String,
+        default: generateConfirmToken()
+    },
+    confirm: {
+        type: Boolean,
+        default: false
     },
     commets: {
         type: Array,

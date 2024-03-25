@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/User.js";
+import emailConfirmation from "../helpers/emailConfirmation.js";
 
 export const log = async (req, res) => {
     const { email, password } = req.body;
@@ -41,6 +42,13 @@ export const register = async (req, res) => {
     try {
 
         const newUser = new User({ name, email, password });
+
+        emailConfirmation({
+            name,
+            email,
+            token: newUser.token
+        });
+
         await newUser.save();
         res.json({ msg: 'User created' });
 
@@ -49,11 +57,27 @@ export const register = async (req, res) => {
     }
 }
 
+export const confirm = async(req, res) => {
+    const { token } = req.params;
 
+    const user = await User.findOne({ token });
+
+    if(!user) {
+        return res.status(400).json({ msg: 'User not found' });
+    }
+
+    try {
+        user.token = null;
+        user.confirm = true;
+        await user.save();
+
+        return res.json({ msg: 'User confirmed!' });
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 /*
     TODO:
     - Add forgot password
-    - Add token confirmation
-    - Add email confirmation
 */
