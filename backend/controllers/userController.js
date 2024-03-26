@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
 import User from "../models/User.js";
 import emailConfirmation from "../helpers/emailConfirmation.js";
+import { generateJWT } from "../helpers/generateJWT.js";
 
 export const log = async (req, res) => {
     const { email, password } = req.body;
@@ -12,7 +12,11 @@ export const log = async (req, res) => {
     }
 
     if(await user.checkPassword(password)) {
-        return res.json({ msg: 'Login success' });
+
+        user.token = generateJWT(user.id);
+        const { name, email, token, _id } = user;
+
+        return res.json({ name, email, token, _id });
     } else {
         return res.status(400).json({ msg: 'The email or the passwords are wrong' });
     }
@@ -50,7 +54,7 @@ export const register = async (req, res) => {
         });
 
         await newUser.save();
-        res.json({ msg: 'User created' });
+        res.json({ msg: 'Email sended, please check your account' });
 
     } catch (error) {
         res.status(500).json({ msg: 'Error creating user' });
@@ -80,4 +84,5 @@ export const confirm = async(req, res) => {
 /*
     TODO:
     - Add forgot password
+    - Generate a JWT secret word
 */
