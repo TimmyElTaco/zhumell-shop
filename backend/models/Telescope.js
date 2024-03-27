@@ -34,6 +34,10 @@ const telescopesSchema = mongoose.Schema({
     },
     images: {
         type: [String],
+    },
+    price: {
+        type: Number,
+        required: true
     }
 });
 

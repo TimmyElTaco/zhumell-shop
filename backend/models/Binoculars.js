@@ -28,6 +28,10 @@ const binocularsSchema = mongoose.Schema({
     enviromentProtection: {
         type: String,
         field: 'enviroment_protection',
+    },
+    price: {
+        type: Number,
+        required: true
     }
 });
 

@@ -14,8 +14,6 @@ export async function checkAuth( req, res, next ) {
 
             req.userAuth = await User.findById(decoded.id).select('-password -token -confirm');
 
-            console.log(req.userAuth);
-
             return next();
 
         } catch (e) {

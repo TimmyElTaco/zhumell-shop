@@ -10,6 +10,10 @@ const accessoriesSchema = mongoose.Schema({
         type: Array,
         required: true,
         trim: true,
+    },
+    price: {
+        type: Number,
+        required: true
     }
 });
 

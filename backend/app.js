@@ -5,6 +5,7 @@ import telescopesRoutes from './routes/telescopesRoutes.js';
 import binocularsRoutes from './routes/binocularsRoutes.js';
 import accessoriesRoutes from './routes/accessoriesRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import buyRoutes from './routes/buyRoutes.js';
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use('/product/binoculars', binocularsRoutes);
 app.use('/product/accessories', accessoriesRoutes);
 
 app.use('/login', authRoutes)
+
+app.use('/buy', buyRoutes)
 
 const port = process.env.PORT || 4000;
 

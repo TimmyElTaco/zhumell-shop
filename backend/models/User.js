@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     commets: {
         type: Array,
         default: []
+    },
+    purchases: {
+        type: Array,
+        default: []
     }
 });
 
