@@ -3,7 +3,7 @@ import Binoculars from "../models/Binoculars.js";
 
 export async function getBinoculars(req, res) {
     const binoculars = await Binoculars.find();
-    res.json({ msg: binoculars });
+    res.json(binoculars);
 }
 
 export async function getBinocular(req, res) {
