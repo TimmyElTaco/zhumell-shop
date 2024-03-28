@@ -2,26 +2,29 @@ import Stripe from 'stripe';
 import Telescope from '../models/Telescope.js';
 import Binoculars from '../models/Binoculars.js';
 import Accessories from '../models/Accessories.js';
-
+import Orders from '../models/Orders.js';
 
 export const createSession = async (req, res) => {
     const stripe = new Stripe(process.env.PAYMENT_API_KEY);
+
+    const { products, id } = req.body;
     
-    if(req.body.length < 1) {
+    if(products.length < 1) {
         const error = new Error('Products not found');
 
         return res.status(404).json({ msg: error.message });
     }
 
     let line_items = [];
+    let items = [];
 
     try {
         
-        const promises = req.body.map(async (product) => {
+        const promises = products.map(async (product) => {
             
             try {
                 let item;
-                if(product.category === 'telescope') {
+                if(product.category === 'telescopes') {
                     item = await Telescope.findById(product.id);
                 } else if (product.category === 'binoculars') {
                     item = await Binoculars.findById(product.id);
@@ -52,7 +55,16 @@ export const createSession = async (req, res) => {
                 quantity: product.units
             }
 
+            const category = product.category[0].toUpperCase() + product.category.slice(1);
+
+            const itemData = {
+                product_id: product._id,
+                product_model: category,
+                units: product.units
+            }
+
             line_items.push(item);
+            items.push(itemData);
         });
 
     } catch (e) {
@@ -60,11 +72,44 @@ export const createSession = async (req, res) => {
         return res.status(500).json({ msg: error.message });
     }
 
+    const itemsJSON = JSON.stringify(items);
+
     const session = await stripe.checkout.sessions.create({
         line_items,
         mode: 'payment',
-        success_url:`${process.env.FRONTEND_URL}/success`,
+        payment_intent_data: {
+            metadata: {
+                customer_id: id,
+                itemsJSON
+            }
+        },
+        success_url:`${process.env.FRONTEND_URL}/buy/success`,
         cancel_url: `${process.env.FRONTEND_URL}/`
-    })
+    });
     return res.json(session.url);
+}
+
+export const addOrder = async (req, res) => {
+    try {
+        if (req.body.type === 'payment_intent.succeeded') {
+            const paymentIntent = req.body.data.object;
+            
+            const metadata = paymentIntent.metadata;
+
+            const { customer_id, itemsJSON } = metadata;
+
+            const items = JSON.parse(itemsJSON);
+
+            const newOrder = new Orders({ customer_id, items });
+
+            await newOrder.save();
+
+            res.status(200).end();
+        } else {
+            res.status(200).end();
+        }
+    } catch (error) {
+        console.error('Error processing webhook event:', error);
+        res.status(500).end();
+    }
 }

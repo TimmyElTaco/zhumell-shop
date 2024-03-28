@@ -18,9 +18,9 @@ app.use('/product/telescopes', telescopesRoutes);
 app.use('/product/binoculars', binocularsRoutes);
 app.use('/product/accessories', accessoriesRoutes);
 
-app.use('/login', authRoutes)
+app.use('/login', authRoutes);
 
-app.use('/buy', buyRoutes)
+app.use('/buy', buyRoutes);
 
 const port = process.env.PORT || 4000;
 
