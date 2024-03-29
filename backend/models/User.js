@@ -23,14 +23,6 @@ const userSchema = new mongoose.Schema({
     confirm: {
         type: Boolean,
         default: false
-    },
-    commets: {
-        type: Array,
-        default: []
-    },
-    purchases: {
-        type: Array,
-        default: []
     }
 });
 

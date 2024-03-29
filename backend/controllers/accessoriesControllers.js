@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Accessories from '../models/Accessories.js';
+import getComments from '../helpers/getComments.js';
 
 export async function getAccessories(req, res) {
     const accessories = await Accessories.find();
@@ -19,5 +20,7 @@ export async function getAccessory(req, res) {
         return res.status(404).json({ msg: 'Accessory not found!' })
     }
 
-    res.json(accessory);
+    const comments = await getComments(product_id);
+
+    return res.json({ accessory, comments });
 }

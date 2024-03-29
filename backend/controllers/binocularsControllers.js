@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Binoculars from "../models/Binoculars.js";
+import getComments from "../helpers/getComments.js";
 
 export async function getBinoculars(req, res) {
     const binoculars = await Binoculars.find();
@@ -7,7 +8,7 @@ export async function getBinoculars(req, res) {
 }
 
 export async function getBinocular(req, res) {
-    const { id } = req.params;
+    const { product_id } = req.params;
   
     if(!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ msg: 'Binocular not found' });
@@ -18,6 +19,8 @@ export async function getBinocular(req, res) {
     if(!binocular) {
         return res.status(404).json({ msg: 'Binocular not found' });
     }
+
+    const comments = await getComments(product_id);
   
-    res.json(binocular);
+    return res.json({ binocular, comments });
 }
