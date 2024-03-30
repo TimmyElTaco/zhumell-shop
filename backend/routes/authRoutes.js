@@ -4,7 +4,7 @@ import { checkAuth } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/lgin', log);
+router.post('/login', log);
 router.post('/register', register);
 router.get('/confirm/:token', confirm);
 
