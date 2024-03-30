@@ -18,7 +18,7 @@ app.use('/product/telescopes', telescopesRoutes);
 app.use('/product/binoculars', binocularsRoutes);
 app.use('/product/accessories', accessoriesRoutes);
 
-app.use('/login', authRoutes);
+app.use('/user', authRoutes);
 
 app.use('/buy', buyRoutes);
 
