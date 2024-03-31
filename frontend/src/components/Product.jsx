@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 
 
-export default function Product({ product }) {
+export default function Product({ product, price = null, id = null }) {
     return (
-        <Link 
-            to={`/product/${product}`}
-            className="h-3/4 w-72 border-2 border-white border-opacity-25 rounded-lg overflow-hidden"
+        <Link
+            to={id ? `product/${product}/${id}` : `/product/${product}`}
+            className={`h-3/4 w-72 overflow-hidden flex flex-col justify-center border-2 border-white border-opacity-25 ${price ?'pt-4 pb-1':'pt-1'}`}
         >
             <img 
-                src={`/src/assets/products/${product}.webp`}
-                className="h-4/5 w-full object-cover"
+                src={`/src/assets/products/${product}.png`}
+                className="h-4/5 w-[95%] object-cover bg-white rounded-md bg-opacity-5 self-center active:scale-95 transition-transform duration-50"
             />
             <div className="p-4">
                 <h3 className="text-2xl tracking-tight font-semibold capitalize">{product}</h3>
+                {
+                    price ?
+                        <h2 className="text-sm text-gray-300">{price}</h2>
+                    : ''
+                }
             </div>
         </Link>
     )

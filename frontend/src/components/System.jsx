@@ -2,7 +2,7 @@
 export default function System() {
 
     return (
-        <div className="flex flex-col justify-center items-center relative">
+        <div className="flex flex-col justify-center items-center relative animate-fade">
             <div className="bg-red-500 h-6 w-6 top-auto right-36 absolute rounded-full">
                 <div className="w-10 absolute h-1 bg-red-400 rounded-full top-[10px] -left-2 -rotate-[30deg]"></div>
             </div>    
