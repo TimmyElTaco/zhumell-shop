@@ -9,7 +9,7 @@ export default function Product({ product, price = null, id = null }) {
         >
             <img 
                 src={`/src/assets/products/${product}.png`}
-                className="h-4/5 w-[95%] object-cover bg-white rounded-md bg-opacity-5 self-center active:scale-95 transition-transform duration-50"
+                className="h-4/5 w-[95%] object-cover bg-white hover:bg-opacity-15 rounded-md bg-opacity-5 self-center active:scale-95 duration-50 transition-all"
             />
             <div className="p-4">
                 <h3 className="text-2xl tracking-tight font-semibold capitalize">{product}</h3>

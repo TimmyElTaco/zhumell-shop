@@ -10,7 +10,9 @@ export default function useIntersection(options = {}) {
     
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                setIsIntersecting(entry.isIntersecting)
+                if (entry.isIntersecting) {
+                    setIsIntersecting(entry.isIntersecting)
+                }
             })
         } ,options)
     

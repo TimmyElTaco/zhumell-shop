@@ -12,7 +12,7 @@ export async function checkAuth( req, res, next ) {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-            req.userAuth = await User.findById(decoded.id).select('-password -token -confirm');
+            req.userAuth = await User.findById(decoded.id).select('-password -token -confirm -__v');
 
             return next();
 
