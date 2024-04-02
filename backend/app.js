@@ -9,6 +9,7 @@ import binocularsRoutes from './routes/binocularsRoutes.js';
 import accessoriesRoutes from './routes/accessoriesRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import buyRoutes from './routes/buyRoutes.js';
+import { getCatalog } from './controllers/productsControllers.js';
 
 
 const app = express();
@@ -19,6 +20,8 @@ dotenv.config();
 app.use(cors())
 
 connectDB();
+
+app.get('/catalog', getCatalog);
 
 app.use('/product/telescopes', telescopesRoutes);
 app.use('/product/binoculars', binocularsRoutes);

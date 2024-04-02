@@ -1,4 +1,4 @@
-export default function Division({ intersection }) {
+export default function Division({ intersection = true }) {
     return (
         <>
             <div 

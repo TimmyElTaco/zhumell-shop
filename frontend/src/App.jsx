@@ -4,6 +4,8 @@ import Layout from './layouts/Layout';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import { AuthProvider } from './context/AuthProvider';
+import Register from './pages/Register';
+import Catalog from './pages/Catalog';
 
 function App() {
 
@@ -16,8 +18,9 @@ function App() {
             <Route path='/' element={<Layout />}>
               <Route index element={<Landing />}></Route>
               <Route path='login' element={<Login />}></Route>
-              {/* <Route path='register' element={<Landing />}></Route>
-              <Route path='confirm/:id' element={<Landing />}></Route> */}
+              <Route path='register' element={<Register />}></Route>
+              {/*<Route path='confirm/:id' element={<Landing />}></Route> */}
+              <Route path='catalog' element={<Catalog />}></Route>
             </Route>
           
           </Routes>

@@ -3,7 +3,7 @@ export default function System() {
 
     return (
         <div className="flex flex-col justify-center items-center relative animate-fade">
-            <div className="bg-red-500 h-6 w-6 top-auto right-36 absolute rounded-full">
+            <div className="bg-red-500 h-6 w-6 top-auto right-36 absolute rounded-full animate-jump-in">
                 <div className="w-10 absolute h-1 bg-red-400 rounded-full top-[10px] -left-2 -rotate-[30deg]"></div>
             </div>    
             <div className="w-6 h-6 bg-white absolute top-10 rounded-full"></div>
