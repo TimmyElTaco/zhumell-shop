@@ -21,7 +21,6 @@ export default function Catalog() {
                 setTelescopes(data.telescopes);
                 setBinoculars(data.binoculars);
                 setAccessories(data.accessories);
-                console.log(data.telescopes.category)
                 setLoading(false);
             } catch (error) {
                 console.error(error);

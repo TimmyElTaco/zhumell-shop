@@ -26,9 +26,9 @@ function App() {
               <Route path='catalog'>
                 <Route index element={<Catalog />}></Route>
                 <Route path=':product' element={<Category />}></Route>
-                <Route path='telescopes/:product_id' element={<ProductPage product='telescopes' />}></Route>
-                <Route path='binoculars/:product_id' element={<ProductPage product='binoculars'/>}></Route>
-                <Route path='accessories/:product_id' element={<ProductPage product='accessories'/>}></Route>
+                <Route path='telescopes/:product_id' element={<ProductPage category='telescopes' />}></Route>
+                <Route path='binoculars/:product_id' element={<ProductPage category='binoculars'/>}></Route>
+                <Route path='accessories/:product_id' element={<ProductPage category='accessories'/>}></Route>
               </Route>
             </Route>
           
