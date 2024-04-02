@@ -26,7 +26,7 @@ export default function Landing() {
                 </div>
                 <System />
             </section>
-            <section className="relative h-screen w-full flex flex-col gap-14 justify-center items-center text-white">
+            <section className="relative h-screen w-full flex flex-col gap-9 justify-center items-center text-white">
                 <h2 className="text-3xl font-semibold tracking-wide">Benefits</h2>
 
                 <Division intersection={intersectingBenefits} />                
@@ -73,9 +73,9 @@ export default function Landing() {
                     <h2 className={`text-4xl font-semibold text-balance ${intersectingNumbers ? 'animate-fade-up' : ''} opacity-0`}>Most important brand of telescopes</h2>
                 </div>
             </section>
-            <section className="relative h-screen w-full flex flex-col gap-14 justify-center items-center text-white pt-[140px]">
-                <Division intersection={intersectingCategorys} />
+            <section className="relative h-screen w-full flex flex-col gap-9 justify-center items-center text-white pt-[140px]">
                 <h2 className="text-3xl font-semibold tracking-wide">Categorys</h2>
+                <Division intersection={intersectingCategorys} />
                 <div className="flex gap-12" ref={categorysRef}>
                     <Product product='telescopes' />
                     <Product product='binoculars' />

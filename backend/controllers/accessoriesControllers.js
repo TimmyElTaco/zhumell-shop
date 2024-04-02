@@ -4,7 +4,7 @@ import getComments from '../helpers/getComments.js';
 
 export async function getAccessories(req, res) {
     const accessories = await Accessories.find();
-    res.json({ msg: accessories });
+    res.json(accessories);
 }
 
 export async function getAccessory(req, res) {

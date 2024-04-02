@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 export async function getTelescopes(req, res) {
     const telescopes = await Telescope.find();
     
-    res.json({ msg: telescopes });
+    res.json(telescopes);
 }
 
 export async function getTelescope(req, res) {

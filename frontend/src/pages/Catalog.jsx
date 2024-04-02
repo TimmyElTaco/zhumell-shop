@@ -21,9 +21,8 @@ export default function Catalog() {
                 setTelescopes(data.telescopes);
                 setBinoculars(data.binoculars);
                 setAccessories(data.accessories);
-
+                console.log(data.telescopes.category)
                 setLoading(false);
-                console.log(data.accessories)
             } catch (error) {
                 console.error(error);
             }
@@ -36,7 +35,7 @@ export default function Catalog() {
             <nav className="h-full border-r-2 border-white col-start-1 border-opacity-25 mt-32 list-none flex p-4 flex-col gap-20 text-xl items-center">
                 <li>
                     <Link 
-                        to='/product/telescopes' 
+                        to='/catalog/telescopes' 
                         className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
                     >
                         Telescopes
@@ -44,7 +43,7 @@ export default function Catalog() {
                 </li>
                 <li>
                     <Link 
-                        to='/product/binoculars'
+                        to='/catalog/binoculars'
                         className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
                     >
                         Binoculars
@@ -52,7 +51,7 @@ export default function Catalog() {
                 </li>
                 <li>
                     <Link 
-                        to='/product/accesories'
+                        to='/catalog/accessories'
                         className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
                     >
                         Accessories
@@ -75,7 +74,7 @@ export default function Catalog() {
                                 {
                                     telescopes.map((telescope) => {
                                         return (
-                                            <Product key={telescope._id} id={telescope._id} product={telescope.name} price={telescope.price} srcImage={telescope.images[0]} />
+                                            <Product key={telescope._id} id={telescope._id} product={telescope.category} price={telescope.price} srcImage={telescope.images[0]} />
                                         )
                                     })
                                 }
@@ -96,7 +95,7 @@ export default function Catalog() {
                                     {
                                         binoculars.map((binocular) => {
                                             return (
-                                                <Product key={binocular._id} id={binocular._id} product={binocular.name} price={binocular.price} srcImage={binocular.images[0]} />
+                                                <Product key={binocular._id} id={binocular._id} product={binocular.category} price={binocular.price} srcImage={binocular.images[0]} />
                                             )
                                         })
                                     }
@@ -119,7 +118,7 @@ export default function Catalog() {
                                     {
                                         accessories.map((accessorie, i) => {
                                             return (
-                                                <Product key={accessorie._id} id={accessorie._id} product={accessorie.name} price={accessorie.price} srcImage={accessorie.images[0]} />
+                                                <Product key={accessorie._id} id={accessorie._id} product={accessorie.category} price={accessorie.price} srcImage={accessorie.images[0]} />
                                             )
                                         })
                                     }
