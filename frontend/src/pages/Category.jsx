@@ -45,7 +45,7 @@ export default function Category() {
                                 {
                                     products.map((product) => {
                                         return (
-                                            <Product key={product._id} id={product._id} product={product.category} price={product.price} srcImage={product.images[0]} />
+                                            <Product key={product._id} id={product._id} product={product.category} price={product.price} srcImage={product.images[0]} name={product.name} />
                                         )
                                     })
                                 }

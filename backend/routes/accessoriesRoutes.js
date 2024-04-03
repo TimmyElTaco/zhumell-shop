@@ -5,7 +5,7 @@ import addComment from '../helpers/addComment.js';
 const router = express.Router();
 
 router.get('/', getAccessories);
-router.get('/:id', getAccessory);
+router.get('/:product_id', getAccessory);
 router.post('/comment', addComment);
 
 export default router;

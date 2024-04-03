@@ -8,19 +8,19 @@ export async function getAccessories(req, res) {
 }
 
 export async function getAccessory(req, res) {
-    const { id } = req.params;
+    const { product_id } = req.params;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
+    if(!mongoose.Types.ObjectId.isValid(product_id)) {
         return res.status(404).json({ msg: 'Accessory not found!' })
     }
 
-    const accessory = await Accessories.findById(id);
+    const accessories = await Accessories.findById(product_id);
     
-    if(!accessory) {
+    if(!accessories) {
         return res.status(404).json({ msg: 'Accessory not found!' })
     }
 
     const comments = await getComments(product_id);
 
-    return res.json({ accessory, comments });
+    return res.json({ accessories, comments });
 }

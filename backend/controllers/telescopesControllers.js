@@ -15,13 +15,13 @@ export async function getTelescope(req, res) {
         return res.status(404).json({ msg: 'Telescope not found' });
     }
 
-    const telescope = await Telescope.findById(product_id);
+    const telescopes = await Telescope.findById(product_id);
 
-    if(!telescope) {
+    if(!telescopes) {
         return res.status(404).json({ msg: 'Telescope not found' });
     }
 
     const comments = await getComments(product_id);
 
-    return res.json({ telescope, comments });
+    return res.json({ telescopes, comments });
 }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-export default function Product({ product, price = null, id = null, srcImage }) {
+export default function Product({ product, price = null, id = null, srcImage, name }) {
     return (
         <Link
             to={id ? `/catalog/${product}/${id}` : `/catalog/${product}`}
@@ -12,7 +12,7 @@ export default function Product({ product, price = null, id = null, srcImage }) 
                 className="h-4/5 w-[95%] object-cover bg-white hover:bg-opacity-15 rounded-md bg-opacity-5 self-center active:scale-95 duration-50 transition-all"
             />
             <div className="p-4">
-                <h3 className="text-sm tracking-tight font-semibold capitalize">{product}</h3>
+                <h3 className="text-sm tracking-tight font-semibold capitalize">{id ? name : product}</h3>
                 {
                     price ?
                         <h2 className="text-xs text-gray-300">

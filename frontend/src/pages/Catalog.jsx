@@ -73,7 +73,7 @@ export default function Catalog() {
                                 {
                                     telescopes.map((telescope) => {
                                         return (
-                                            <Product key={telescope._id} id={telescope._id} product={telescope.category} price={telescope.price} srcImage={telescope.images[0]} />
+                                            <Product key={telescope._id} id={telescope._id} product={telescope.category} price={telescope.price} srcImage={telescope.images[0]} name={telescope.name} />
                                         )
                                     })
                                 }
@@ -94,7 +94,7 @@ export default function Catalog() {
                                     {
                                         binoculars.map((binocular) => {
                                             return (
-                                                <Product key={binocular._id} id={binocular._id} product={binocular.category} price={binocular.price} srcImage={binocular.images[0]} />
+                                                <Product key={binocular._id} id={binocular._id} product={binocular.category} price={binocular.price} srcImage={binocular.images[0]} name={binocular.name} />
                                             )
                                         })
                                     }
@@ -117,7 +117,7 @@ export default function Catalog() {
                                     {
                                         accessories.map((accessorie, i) => {
                                             return (
-                                                <Product key={accessorie._id} id={accessorie._id} product={accessorie.category} price={accessorie.price} srcImage={accessorie.images[0]} />
+                                                <Product key={accessorie._id} id={accessorie._id} product={accessorie.category} price={accessorie.price} srcImage={accessorie.images[0]} name={accessorie.name} />
                                             )
                                         })
                                     }

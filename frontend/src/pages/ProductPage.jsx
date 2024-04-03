@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
-import Modal from "../components/Modal";
+
 import axiosClient from "../config/axios";
+
+import Modal from "../components/Modal";
+import Spinner from "../components/Spinner";
+import Table from "../components/Table";
+import shoping from '../assets/shoping.svg'
 
 export default function ProductPage({ category }) {
     const { product_id } = useParams();
@@ -9,12 +14,15 @@ export default function ProductPage({ category }) {
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(true);
     const [product, setProduct] = useState({});
+    const [comments, setComments] = useState([]);
+    const [units, setUnits] = useState(0);
 
     useEffect(() => {
         const getProduct = async () => {
             try {
                 const { data } = await axiosClient(`/product/${category}/${product_id}`);
-                setProduct(data);
+                setProduct(data[category]);
+                setComments(data[comments]);
                 setLoading(false);
             } catch (error) {
                 setOpenModal(true);
@@ -27,7 +35,47 @@ export default function ProductPage({ category }) {
 
     return(
         <>
-            <h1>Producto</h1>
+            {
+                loading ?
+                <div className="grid place-content-center h-screen">
+                    <Spinner />
+                </div>
+                :
+                <main className="w-full flex min-h-screen pt-32">
+                    <section className="flex-1 bg-white">
+
+                    </section>
+                    <section className="flex-1 p-12 flex flex-col justify-between animate-fade">
+                        <h1 className="text-2xl text-balance font-semibold">{product.name}</h1>
+                        <h3 className="text-4xl font-bold">
+                            {
+                                product.price.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })
+                            }
+                        </h3>
+                        <Table product={product} />
+                        <label className="text-xl font-grotesk">
+                            Units:
+                            <input type="number" className="ml-2 text-base w-1/6 rounded-md text-black p-1" />
+                        </label>
+                        <div className="flex gap-2">
+                            <button 
+                                type="submit" 
+                                className='w-3/4 bg-white text-black font-lexend py-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-xl font-semibold'
+                            >
+                                Buy
+                            </button>
+                            <button 
+                                className='font-lexend py-2 rounded-sm hover:bg-white hover:bg-opacity-10 border-2 border-white border-opacity-25 transition-all duration-200 text-xl px-4 active:bg-green-500'
+                            >
+                                <img src={shoping}></img>
+                            </button>
+                        </div>
+                    </section>
+                </main>
+            }
             <Modal show={openModal} title='Error' body='Error loading the page'>
                 <Link 
                     to='/'

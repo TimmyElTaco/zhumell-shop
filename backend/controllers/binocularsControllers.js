@@ -10,17 +10,17 @@ export async function getBinoculars(req, res) {
 export async function getBinocular(req, res) {
     const { product_id } = req.params;
   
-    if(!mongoose.Types.ObjectId.isValid(id)) {
+    if(!mongoose.Types.ObjectId.isValid(product_id)) {
         return res.status(404).json({ msg: 'Binocular not found' });
     }
     
-    const binocular = await Binoculars.findById(id);
+    const binoculars = await Binoculars.findById(product_id);
 
-    if(!binocular) {
+    if(!binoculars) {
         return res.status(404).json({ msg: 'Binocular not found' });
     }
 
     const comments = await getComments(product_id);
   
-    return res.json({ binocular, comments });
+    return res.json({ binoculars, comments });
 }
