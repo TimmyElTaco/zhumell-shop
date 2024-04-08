@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 import Spinner from "../components/Spinner";
 import Table from "../components/Table";
 import shoping from '../assets/shoping.svg'
+import Gallery from "../components/Gallery";
 
 export default function ProductPage({ category }) {
     const { product_id } = useParams();
@@ -27,7 +28,6 @@ export default function ProductPage({ category }) {
             } catch (error) {
                 setOpenModal(true);
             }
-
         }
 
         getProduct();
@@ -41,11 +41,11 @@ export default function ProductPage({ category }) {
                     <Spinner />
                 </div>
                 :
-                <main className="w-full flex min-h-screen pt-32">
-                    <section className="flex-1 bg-white">
-
+                <main className="w-full flex min-h-screen lg:h-screen h-auto pt-32 flex-col lg:flex-row">
+                    <section className="flex-1 animate-fade">
+                        <Gallery images={product.images}/>
                     </section>
-                    <section className="flex-1 p-12 flex flex-col justify-between animate-fade">
+                    <section className="flex-1 p-12 flex flex-col justify-between animate-fade gap-8">
                         <h1 className="text-2xl text-balance font-semibold">{product.name}</h1>
                         <h3 className="text-4xl font-bold">
                             {
@@ -58,7 +58,18 @@ export default function ProductPage({ category }) {
                         <Table product={product} />
                         <label className="text-xl font-grotesk">
                             Units:
-                            <input type="number" className="ml-2 text-base w-1/6 rounded-md text-black p-1" />
+                            <input 
+                                type="number" 
+                                onChange={(e) => {
+                                    if(e.target.value < 0) {
+                                        setUnits(0);
+                                        return
+                                    }
+                                    setUnits(e.target.value)
+                                }} 
+                                className="ml-2 text-base w-1/6 rounded-md text-black p-1 text-center" 
+                                value={units} 
+                            />
                         </label>
                         <div className="flex gap-2">
                             <button 
