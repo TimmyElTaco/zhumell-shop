@@ -17,7 +17,7 @@ export async function checkAuth( req, res, next ) {
             return next();
 
         } catch (e) {
-            const error = new Error('Token no valido');
+            const error = new Error("Invalid token or doesn't exist");
             res.status(403).json({ msg: error.message });
         }
 

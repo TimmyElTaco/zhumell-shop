@@ -24,6 +24,8 @@ export const createSession = async (req, res) => {
             
             try {
                 let item;
+                if(product.units < 1) return
+                
                 if(product.category === 'telescopes') {
                     item = await Telescope.findById(product.id);
                 } else if (product.category === 'binoculars') {

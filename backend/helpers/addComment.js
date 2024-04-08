@@ -1,11 +1,14 @@
 import Comments from "../models/Comments.js";
 
 export default async function addComment(req, res) {
-    const { comment, product_id, product_model, customer_id } = req.body;
+    const { comment, product_id, category, customer_id } = req.body;
 
-    if([comment, product_id, product_model, customer_id].includes('')) {
+    if([comment, product_id, category, customer_id].includes('')) {
         return res.json({ msg: 'Please complete all fields' })
     }
+
+    const result = category[0].toUpperCase();
+    const product_model = result + category.substring(1);
 
     try {
         const newComment = new Comments({ comment, product_id, product_model, customer_id });

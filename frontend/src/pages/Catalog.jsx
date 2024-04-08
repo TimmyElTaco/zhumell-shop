@@ -60,7 +60,7 @@ export default function Catalog() {
             <section className="mt-32 flex flex-col justify-start px-5 col-span-4">
                 {
                     loading ?
-                        <div className="h-screen w-screen flex justify-center items-center">
+                        <div className="h-screen w-full flex justify-center items-center">
                             <Spinner />
                         </div>
                     :
@@ -78,7 +78,7 @@ export default function Catalog() {
                                     })
                                 }
                                 <Link
-                                    to='/product/telescopes'
+                                    to='/catalog/telescopes'
                                     className='text-xl animate-fade flex items-end hover:text-gray-500'
                                 >
                                     Show more
@@ -99,7 +99,7 @@ export default function Catalog() {
                                         })
                                     }
                                     <Link 
-                                        to='/product/binoculars'
+                                        to='/catalog/binoculars'
                                         className='text-xl animate-fade flex items-end hover:text-gray-500'
                                     >
                                         Show more
@@ -122,7 +122,7 @@ export default function Catalog() {
                                         })
                                     }
                                     <Link 
-                                        to='/product/accessories'
+                                        to='/catalog/accessories'
                                         className='text-xl animate-fade flex items-center hover:text-gray-500'
                                     >
                                         Show more
