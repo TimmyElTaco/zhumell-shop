@@ -120,6 +120,5 @@ export default function Shop() {
                     </button>
                 </Modal>
             </section>
-
     )
 }

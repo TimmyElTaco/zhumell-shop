@@ -43,6 +43,29 @@ export const AuthProvider = ({ children }) => {
 
     const createOrder = async (products, id) => {
         console.log(products, id);
+
+        const token = localStorage.getItem('token');
+
+        if(!token) {
+            navigate('/login')
+            return
+        }
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        try {
+            const { data } = await axiosClient.post('/buy/create-order', { products, id }, config);
+            window.location.href = data;
+            localStorage.removeItem('products');
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
