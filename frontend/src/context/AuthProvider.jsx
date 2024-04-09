@@ -42,8 +42,6 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const createOrder = async (products, id) => {
-        console.log(products, id);
-
         const token = localStorage.getItem('token');
 
         if(!token) {

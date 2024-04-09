@@ -9,6 +9,7 @@ import Catalog from './pages/Catalog';
 import Category from './pages/Category';
 import ProductPage from './pages/ProductPage';
 import Shop from './pages/Shop';
+import SuccessPage from './pages/SuccessPage';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
               <Route path='register' element={<Register />}></Route>
               {/*<Route path='confirm/:id' element={<Landing />}></Route> */}
               <Route path='shop' element={<Shop />}></Route>
+              <Route path='buy/success' element={<SuccessPage />}></Route>
               <Route path='catalog'>
                 <Route index element={<Catalog />}></Route>
                 <Route path=':product' element={<Category />}></Route>
