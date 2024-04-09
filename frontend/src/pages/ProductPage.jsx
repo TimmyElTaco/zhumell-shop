@@ -19,6 +19,7 @@ export default function ProductPage({ category }) {
 
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [spinner, setSpinner] = useState(false);
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
     const [units, setUnits] = useState(1);
@@ -107,6 +108,14 @@ export default function ProductPage({ category }) {
         localStorage.setItem('products', JSON.stringify(newProducts));
     }
 
+    const makeOrder = async () => {
+        setSpinner(!spinner)
+
+        await createOrder([{ id: product._id, category, units }], auth._id)
+        
+        setSpinner(!spinner)
+    }
+
     const notify = () => {
         toast.success('Check your shopping car', {
             position: "top-center",
@@ -161,13 +170,16 @@ export default function ProductPage({ category }) {
                             </label>
                             <div className="flex gap-2">
                                 <button
-                                    onClick={() => {
-                                        createOrder([{ id: product._id, category, units }], auth._id)
-                                    }}
+                                    onClick={makeOrder}
                                     type="submit" 
-                                    className='w-3/4 bg-white text-black font-lexend py-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-xl font-semibold'
+                                    className={`w-3/4 ${spinner ? 'bg-green-600' : 'bg-white hover:bg-gray-300'} grid place-content-center text-black font-lexend py-2 rounded-sm  transition-all duration-200 text-xl font-semibold h-11`}
                                 >
-                                    Buy
+                                    {
+                                        spinner ? 
+                                            <Spinner />
+                                        :
+                                            'Buy'
+                                    }
                                 </button>
                                 <button 
                                     className='font-lexend py-2 rounded-sm hover:bg-white hover:bg-opacity-10 border-2 border-white border-opacity-25 transition-all duration-200 text-xl px-4 active:bg-green-500'

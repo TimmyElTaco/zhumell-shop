@@ -3,11 +3,13 @@ import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from 'react-router-dom'
 import noShop from '../assets/no-shop.svg'
 import Modal from "../components/Modal";
+import Spinner from "../components/Spinner";
 
 export default function Shop() {
 
     const [products, setProducts] = useState([]);
     const [openModal, setOpenModal] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const { auth, createOrder } = useAuth();
     const navigate = useNavigate();
@@ -29,7 +31,8 @@ export default function Shop() {
         setOpenModal(!openModal)
     }
 
-    const makeOrder = () => {
+    const makeOrder = async () => {
+        setLoading(!loading)
         const newProducts = products.map(product => {
             return {
                 id: product.id,
@@ -38,7 +41,9 @@ export default function Shop() {
             }
         })
 
-        createOrder(newProducts, auth._id)
+        await createOrder(newProducts, auth._id)
+
+        setLoading(!loading)
     }
 
     const deleteProduct = (e) => {
@@ -62,8 +67,8 @@ export default function Shop() {
                 </div>
             </section>
         :
-            <section className="h-screen pt-32 w-full flex justify-center items-center flex-col">
-                <div className="border-2 border-white border-opacity-25 p-5 w-5/6 lg:w-1/2 flex flex-col items-start gap-6 rounded-sm">
+            <section className="min-h-screen h-screen pt-32 pb-10 w-full flex justify-center items-center flex-col">
+                <div className="border-2 border-white border-opacity-25 p-5 w-5/6 lg:w-1/2 min-h-3/4 flex flex-col items-start gap-6 rounded-sm">
                     <h1 className="text-xl my-2">All your products</h1>
                     {
                         products.map(product => {
@@ -89,13 +94,18 @@ export default function Shop() {
                             )
                         })
                     }
-                    <div className="flex w-full gap-2">
+                    <div className="flex w-full gap-2 mt-auto">
                         <button 
                             type="submit" 
-                            className='flex-1 bg-white text-black font-lexend py-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-xl font-semibold'
+                            className={`flex-1 grid place-content-center ${loading ? 'bg-green-600' : 'bg-white hover:bg-gray-300'} text-black font-lexend py-2 rounded-sm transition-all duration-200 text-xl font-semibold h-11`}
                             onClick={makeOrder}
                         >
-                            Buy
+                            {
+                                loading ? 
+                                    <Spinner />
+                                :
+                                    'Buy'
+                            }
                         </button>
                         <button
                             onClick={() => setOpenModal(!openModal)}
