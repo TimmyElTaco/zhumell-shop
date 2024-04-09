@@ -24,21 +24,31 @@ export default function Header() {
         <h2 className="text-3xl font-grotesk select-none">ZHUMELL</h2>
         <nav>
           <ul className="flex gap-4 text-base">
-            <Link to="/" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Home</Link>
-            <Link to="/catalog" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Catalog</Link>
+            <li className="flex items-start">
+              <Link to="/" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Home</Link>
+            </li>
+            <li className="flex items-start">
+              <Link to="/catalog" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Catalog</Link>
+            </li>
             {
               Object.keys(auth).length === 0 ?
-                  <a href="/login" className='bg-white text-black font-lexend py-1 px-2 rounded-sm text-base hover:bg-gray-300 transition-all duration-200'>
-                    Log In
-                  </a>
+                  <li className="flex items-center">
+                    <a href="/login" className='bg-white text-black font-lexend py-1 px-2 rounded-sm text-base hover:bg-gray-300 transition-all duration-200'>
+                      Log In
+                    </a>
+                  </li>
                 :
-                  <button onClick={() => setOpenModal(!openModal)} className='bg-white text-black font-lexend py-1 px-2 rounded-sm text-base hover:bg-gray-300 transition-all duration-200'>
-                    Log Out
-                  </button>
+                  <li className="flex items-center">
+                    <button onClick={() => setOpenModal(!openModal)} className='bg-white text-black font-lexend py-1 px-2 rounded-sm text-base hover:bg-gray-300 transition-all duration-200'>
+                      Log Out
+                    </button>
+                  </li>
             }
-            <Link to='/shop' className="grid place-content-center px-2 border-2 border-white border-opacity-25 rounded-sm hover:bg-white hover:bg-opacity-25">
-              <img src={shopping}/>
-            </Link>
+            <li className="flex items-center">
+              <Link to='/shop' className="grid place-content-center px-2 py-1 border-2 border-white border-opacity-25 rounded-sm hover:bg-white hover:bg-opacity-25">
+                <img src={shopping} alt='A shopping cart'/>
+              </Link>
+            </li>
           </ul>
         </nav>
         <Modal show={openModal} title='Log out' body={'Are you sure you want to log out?'}>

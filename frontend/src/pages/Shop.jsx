@@ -61,7 +61,7 @@ export default function Shop() {
             <section className="h-screen pt-32 w-full flex justify-center items-center flex-col">
                 <div className="border-2 border-white border-opacity-25 p-5 w-1/2 h-3/4 flex flex-col items-center justify-around rounded-sm">
                     <h1 className="text-2xl font-semibold">You have no articles yet</h1>
-                    <img src={noShop} className="h-2/4 opacity-25" />
+                    <img src={noShop} className="h-2/4 opacity-25" alt="an empty shopping cart" />
                     <p className="text-gray-500">Add articles to the shopping car and then go back!</p>
                     <Link to='/catalog' className='bg-white text-black font-lexend py-1 px-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-base' >Start buying!</Link>
                 </div>
@@ -74,7 +74,7 @@ export default function Shop() {
                         products.map(product => {
                             return (
                                 <article className="flex items-start gap-10 w-full" key={product.id} data-id={product.id}>
-                                    <img src={product.image} className="w-20 h-20 object-cover rounded-md" />
+                                    <img src={product.image} className="w-20 h-20 object-cover rounded-md" alt={`image of the product ${product.name}`} />
                                     <div>
                                         <h2 className="font-semibold">{product.name}</h2>
                                         <small className="mr-4 capitalize text-gray-300">
@@ -111,7 +111,7 @@ export default function Shop() {
                             onClick={() => setOpenModal(!openModal)}
                             className='font-lexend py-2 rounded-sm hover:bg-white hover:bg-opacity-10 border-2 border-white border-opacity-25 transition-all duration-200 text-xl px-4 active:bg-red-500 '
                         >
-                            <img src={noShop}></img>
+                            <img src={noShop} alt="image of a shopping cart empty"></img>
                         </button>
                     </div>
                 </div>

@@ -32,21 +32,21 @@ export default function Landing() {
                 <Division intersection={intersectingBenefits} />                
                 <div className="flex gap-4" ref={benefitsRef}>
                     <article className={`flex flex-col  h-80 items-start justify-center w-80 p-6 text-pretty gap-6 border-2 border-opacity-25 border-white ${intersectingBenefits? 'animate-fade-down' : ''} opacity-0 animate-duration-1000`}>
-                        <img src={robot} />
+                        <img src={robot} alt="a robot" />
                         <h3 className="font-medium text-xl tracking-wide">Advanced technology</h3>
                         <p className="text-sm leading-6 text-gray-400 flex-1">
                             Our telescopes incorporate the latest technological innovations in optics and design.
                         </p>
                     </article>
                     <article className={`flex flex-col h-80 items-start justify-center w-80 p-6 text-pretty gap-6 border-2 border-opacity-25 border-white ${intersectingBenefits? 'animate-fade-up ' : ''} opacity-0 animate-delay-[400ms] animate-duration-1000`}>
-                        <img src={walk} />
+                        <img src={walk} alt="the figure of a stickman walking" />
                         <h3 className="font-medium text-xl tracking-wide">Ergonomic design and portability</h3>
                         <p className="text-sm leading-6 text-gray-400 flex-1">
                             The telescopes we offer have been designed with comfort and portability in mind.
                         </p>
                     </article>
                     <article className={`flex flex-col h-80 bg-gray-900 items-start justify-center w-80 p-6 text-pretty gap-6 ${intersectingBenefits? 'animate-fade-down ' : ''} opacity-0 animate-delay-700 animate-duration-1000`}>
-                        <img src={warranty} />
+                        <img src={warranty} alt="a shield" />
                         <h3 className="font-medium text-xl tracking-wide">Support and warranty</h3>
                         <p className="text-sm leading-6 text-gray-400 flex-1">
                             When you purchase one of our telescopes, you not only get a superior quality product, but also exceptional customer service.

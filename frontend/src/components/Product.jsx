@@ -10,6 +10,7 @@ export default function Product({ product, price = null, id = null, srcImage, na
             <img 
                 src={srcImage ? srcImage : `/src/assets/products/${product}.png`}
                 className="h-4/5 w-[95%] object-cover bg-white hover:bg-opacity-15 rounded-md bg-opacity-5 self-center active:scale-95 duration-50 transition-all"
+                alt={`image of the product ${name}`}
             />
             <div className="p-4">
                 <h3 className="text-sm tracking-tight font-semibold capitalize">{id ? name : product}</h3>

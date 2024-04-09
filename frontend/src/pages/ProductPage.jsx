@@ -140,7 +140,7 @@ export default function ProductPage({ category }) {
                 <main>
                     <div className="w-full flex min-h-screen lg:h-screen h-auto pt-32 flex-col lg:flex-row">
                         <section className="flex-1 animate-fade">
-                            <Gallery images={product.images}/>
+                            <Gallery images={product.images} name={product.name} />
                         </section>
                         <section className="flex-1 p-12 flex flex-col justify-between animate-fade gap-8">
                             <h1 className="text-2xl text-balance font-semibold">{product.name}</h1>
@@ -185,7 +185,7 @@ export default function ProductPage({ category }) {
                                     className='font-lexend py-2 rounded-sm hover:bg-white hover:bg-opacity-10 border-2 border-white border-opacity-25 transition-all duration-200 text-xl px-4 active:bg-green-500'
                                     onClick={addProduct}
                                 >
-                                    <img src={shopping}></img>
+                                    <img src={shopping} alt="A shopping cart"></img>
                                 </button>
                             </div>
                         </section>

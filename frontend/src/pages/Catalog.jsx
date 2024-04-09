@@ -82,7 +82,7 @@ export default function Catalog() {
                                     className='text-xl animate-fade flex items-end hover:text-gray-500'
                                 >
                                     Show more
-                                    <img src={arrow} className="animate-pulse w-6 h-6" />
+                                    <img src={arrow} className="animate-pulse w-6 h-6" alt="arrow pointing to the right" />
                                 </Link>
                             </div>
                         </div>
@@ -103,7 +103,7 @@ export default function Catalog() {
                                         className='text-xl animate-fade flex items-end hover:text-gray-500'
                                     >
                                         Show more
-                                        <img src={arrow} className="animate-pulse w-6 h-6" />
+                                        <img src={arrow} className="animate-pulse w-6 h-6" alt='arrow pointing to the right' />
                                     </Link>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ export default function Catalog() {
                                         className='text-xl animate-fade flex items-center hover:text-gray-500'
                                     >
                                         Show more
-                                        <img src={arrow} className="animate-pulse w-6 h-6" />
+                                        <img src={arrow} className="animate-pulse w-6 h-6" alt='arrow pointing to the right' />
                                     </Link>
                                 </div>
                             </div>
