@@ -83,6 +83,8 @@ export default function ProductPage({ category }) {
 
         const item = {
             id: product_id,
+            image: product.images[0],
+            name: product.name,
             category,
             units
         }
