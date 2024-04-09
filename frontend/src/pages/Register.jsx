@@ -47,10 +47,10 @@ export default function Register() {
                 <Modal show={openModal} title='Register complete' body='Check your email to confirm your account'>
                     <Link to='/login' onClick={() => setOpenModal(!openModal)} className="border-2 border-white border-opacity-25 px-4 py-2 rounded hover:bg-white hover:bg-opacity-25 transition-colors duration-150">Ok</Link>
                 </Modal>
-                <div className="flex items-center justify-center">
+                <div className="hidden lg:flex items-center justify-center">
                     <System />
                 </div>
-                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white p-6 w-1/4 border-opacity-50 rounded-md">
+                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white p-6 w-2/4 lg:w-1/4 border-opacity-50 rounded-md">
                     <Alert message={alert} />
                     <label htmlFor="name" className="block p-2 text-lg mt-2">
                         Name:

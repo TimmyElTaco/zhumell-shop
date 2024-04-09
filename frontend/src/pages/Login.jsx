@@ -41,10 +41,10 @@ export default function Login() {
     return (
         <>
             <div className="flex justify-evenly pt-32 h-screen">
-                <div className="flex items-center justify-center">
+                <div className="hidden lg:flex items-center justify-center">
                     <System />
                 </div>
-                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white h-3/4 p-6 w-1/4 border-opacity-50 rounded-md">
+                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white h-3/4 p-6 md:w-1/2 lg:w-1/4 border-opacity-50 rounded-md">
                     <Alert message={alert} />
                     <label htmlFor="email" className="block p-2 text-lg mt-6">
                         Email:
