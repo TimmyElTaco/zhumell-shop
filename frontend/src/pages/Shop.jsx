@@ -9,7 +9,7 @@ export default function Shop() {
     const [products, setProducts] = useState([]);
     const [openModal, setOpenModal] = useState(false);
 
-    const {auth} = useAuth();
+    const { auth, createOrder } = useAuth();
     const navigate = useNavigate();
     
     
@@ -27,6 +27,18 @@ export default function Shop() {
         localStorage.removeItem('products');
         setProducts([]);
         setOpenModal(!openModal)
+    }
+
+    const makeOrder = () => {
+        const newProducts = products.map(product => {
+            return {
+                id: product.id,
+                category: product.category,
+                units: product.units
+            }
+        })
+
+        createOrder(newProducts, auth._id)
     }
 
     const deleteProduct = (e) => {
@@ -81,6 +93,7 @@ export default function Shop() {
                         <button 
                             type="submit" 
                             className='flex-1 bg-white text-black font-lexend py-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-xl font-semibold'
+                            onClick={makeOrder}
                         >
                             Buy
                         </button>

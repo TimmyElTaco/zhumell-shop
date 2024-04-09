@@ -15,7 +15,7 @@ import useAuth from "../hooks/useAuth";
 
 export default function ProductPage({ category }) {
     const { product_id } = useParams();
-    const { auth } = useAuth();
+    const { auth, createOrder } = useAuth();
 
     const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -85,6 +85,7 @@ export default function ProductPage({ category }) {
             id: product_id,
             image: product.images[0],
             name: product.name,
+            price: product.price,
             category,
             units
         }
@@ -108,7 +109,7 @@ export default function ProductPage({ category }) {
 
     const notify = () => {
         toast.success('Check your shopping car', {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -159,7 +160,10 @@ export default function ProductPage({ category }) {
                                 />
                             </label>
                             <div className="flex gap-2">
-                                <button 
+                                <button
+                                    onClick={() => {
+                                        createOrder([{ id: product._id, category, units }], auth._id)
+                                    }}
                                     type="submit" 
                                     className='w-3/4 bg-white text-black font-lexend py-2 rounded-sm hover:bg-gray-300 transition-all duration-200 text-xl font-semibold'
                                 >

@@ -41,12 +41,17 @@ export const AuthProvider = ({ children }) => {
         autenticar();
     }, []);
 
+    const createOrder = async (products, id) => {
+        console.log(products, id);
+    }
+
     return (
         <AuthContext.Provider
             value={{
                 auth,
                 setAuth,
-                logOut
+                logOut,
+                createOrder
             }}
         >
             {children}
