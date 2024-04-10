@@ -31,6 +31,7 @@ export default function Header() {
               after:h-[2px] after:w-6 after:bg-white after:absolute after:left-0 after:top-2 after:transition-transform after:duration-200
               ${active ? 'bg-black before:rotate-45 before:top-1/2 after:-rotate-45 after:-top-1/2' : 'bg-white'}  
             `}
+            aria-label="open navbar"
           />
         </div>
 
