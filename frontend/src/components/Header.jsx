@@ -19,15 +19,10 @@ export default function Header() {
       navigate('/');
     }
 
-    const showNav = () => {
-      setActive(!active);
-    }
-
-
     return (
       <header className="fixed flex w-full justify-around h-24 items-center bg-black z-10">
         <a href="/" className="text-3xl font-grotesk select-none">ZHUMELL</a>
-        <div onClick={showNav} className="relative cursor-pointer md:hidden">
+        <div onClick={() => setActive(!active)} className="relative cursor-pointer md:hidden">
           <button 
             className={`
               transition-all duration-200
