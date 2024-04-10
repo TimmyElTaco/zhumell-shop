@@ -50,7 +50,7 @@ export default function Register() {
                 <div className="hidden lg:flex items-center justify-center">
                     <System />
                 </div>
-                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white p-6 w-2/4 lg:w-1/4 border-opacity-50 rounded-md">
+                <form onSubmit={handleSubmit} className="flex flex-col border-2 border-white p-6 w-3/4 lg:w-1/4 border-opacity-50 rounded-md">
                     <Alert message={alert} />
                     <label htmlFor="name" className="block p-2 text-lg mt-2">
                         Name:

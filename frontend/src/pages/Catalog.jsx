@@ -32,8 +32,8 @@ export default function Catalog() {
 
     return (
         <div className="flex flex-col items-center">
-            <h1 className="pt-32 pb-10 text-4xl text-gray-300">ALL OUR <span className="bg-white bg-opacity-10">PRODUCTS</span></h1>
-            <nav className="h-1/2 lg:h-full list-none flex p-4 pb-8 gap-20 text-xl items-center justify-center border-b-2 border-white border-opacity-10 w-11/12 md:w-5/6 lg:w-3/4">
+            <h1 className="pt-32 pb-10 text-3xl md:text-4xl text-gray-300">ALL OUR <span className="bg-white bg-opacity-10">PRODUCTS</span></h1>
+            <nav className="h-1/2 lg:h-full list-none flex flex-col md:flex-row p-4 pb-8 gap-4 md:gap-10 lg:gap-20 text-xl items-center justify-center border-b-2 border-white border-opacity-10 w-11/12 md:w-5/6 lg:w-3/4">
                 <li>
                     <Link 
                         to='/catalog/telescopes' 
