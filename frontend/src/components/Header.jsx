@@ -7,6 +7,7 @@ import shopping from '../assets/shopping.svg'
 export default function Header() {
 
     const [openModal, setOpenModal] = useState(false);
+    const [active, setActive] = useState(false);
 
     const { auth, logOut } = useAuth();
     
@@ -18,12 +19,28 @@ export default function Header() {
       navigate('/');
     }
 
+    const showNav = () => {
+      setActive(!active);
+    }
+
 
     return (
       <header className="fixed flex w-full justify-around h-24 items-center bg-black z-10">
-        <h2 className="text-3xl font-grotesk select-none">ZHUMELL</h2>
-        <nav>
-          <ul className="flex gap-4 text-base">
+        <a href="/" className="text-3xl font-grotesk select-none">ZHUMELL</a>
+        <div onClick={showNav} className="relative cursor-pointer md:hidden">
+          <button 
+            className={`
+              transition-all duration-200
+              relative h-[2px] w-6 -top-1
+              before:h-[2px] before:w-6 before:bg-white before:absolute before:left-0 before:-top-2 before:transition-transform before:duration-200
+              after:h-[2px] after:w-6 after:bg-white after:absolute after:left-0 after:top-2 after:transition-transform after:duration-200
+              ${active ? 'bg-black before:rotate-45 before:top-1/2 after:-rotate-45 after:-top-1/2' : 'bg-white'}  
+            `}
+          />
+        </div>
+
+        <nav className={`absolute top-[100%] w-full md:w-auto origin-top-right ${active ? 'scale-y-100' : 'scale-y-0'} p-4 md:h-auto overflow-hidden  md:p-0 md:top-0 md:relative bg-black md:bg-transparent transition-all duration-300`}>
+          <ul className="flex flex-col md:flex-row items-center md:items-start gap-4 text-base">
             <li className="flex items-start">
               <Link to="/" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Home</Link>
             </li>
@@ -51,6 +68,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+
         <Modal show={openModal} title='Log out' body={'Are you sure you want to log out?'}>
             <button 
               onClick={handleClick} 
