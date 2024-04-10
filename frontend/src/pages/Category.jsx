@@ -23,7 +23,6 @@ export default function Category() {
             } catch (error) {
                 setOpenModal(true);
             }
-
         }
 
         getProduct();
@@ -39,8 +38,8 @@ export default function Category() {
                         <Spinner />
                     </div>
                 :
-                    <section className="w-3/4 gap-4 border-x-2 border-white border-opacity-25">
-                        <div className="flex h-[600px] justify-evenly items-center flex-wrap">
+                    <section className="w-3/4 gap-4">
+                        <div className="flex justify-evenly items-center gap-4 flex-wrap lg:flex-nowrap pb-20">
                     
                                 {
                                     products.map((product) => {
