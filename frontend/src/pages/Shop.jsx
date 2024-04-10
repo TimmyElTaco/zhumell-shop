@@ -59,7 +59,7 @@ export default function Shop() {
     return (
         products === null || products.length < 1 ?
             <section className="h-screen pt-32 w-full flex justify-center items-center flex-col">
-                <div className="border-2 border-white border-opacity-25 p-5 w-1/2 h-3/4 flex flex-col items-center justify-around rounded-sm">
+                <div className="border-2 border-white border-opacity-25 p-5 w-3/4 md:w-1/2 h-3/4 flex flex-col items-center justify-around rounded-sm">
                     <h1 className="text-2xl font-semibold">You have no articles yet</h1>
                     <img src={noShop} className="h-2/4 opacity-25" alt="an empty shopping cart" />
                     <p className="text-gray-500">Add articles to the shopping car and then go back!</p>
