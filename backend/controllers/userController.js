@@ -84,9 +84,3 @@ export const confirm = async(req, res) => {
 export const getUser = async(req, res) => {
     return res.json(req.userAuth);
 }
-
-/*
-    TODO:
-    - Add forgot password
-    - Generate a JWT secret word
-*/
