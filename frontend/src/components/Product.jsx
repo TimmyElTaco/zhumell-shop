@@ -13,7 +13,7 @@ export default function Product({ product, price = null, id = null, srcImage, na
                 alt={`image of the product ${name}`}
             />
             <div className="p-4">
-                <h3 className="text-sm tracking-tight font-semibold capitalize">{id ? name : product}</h3>
+                <h3 className={`${id ? 'text-sm' : 'text-lg'} tracking-tight font-semibold capitalize`}>{id ? name : product}</h3>
                 {
                     price ?
                         <h2 className="text-xs text-gray-300">
