@@ -34,7 +34,7 @@ export default function Header() {
           />
         </div>
 
-        <nav className={`absolute top-[100%] w-full md:w-auto origin-top-right ${active ? 'scale-y-100' : 'scale-y-0'} p-4 md:h-auto overflow-hidden  md:p-0 md:top-0 md:relative bg-black md:bg-transparent transition-all duration-300`}>
+        <nav className={`absolute top-[100%] w-full md:w-auto origin-top-right ${active ? 'scale-y-100' : 'scale-y-0'} p-4 md:h-auto overflow-hidden md:scale-y-100 md:p-0 md:top-0 md:relative bg-black md:bg-transparent transition-all duration-300`}>
           <ul className="flex flex-col md:flex-row items-center md:items-start gap-4 text-base">
             <li className="flex items-start">
               <Link to="/" className="pt-1 px-1 relative after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35">Home</Link>

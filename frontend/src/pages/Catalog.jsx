@@ -5,6 +5,7 @@ import Product from "../components/Product";
 import Spinner from "../components/Spinner";
 
 import arrow from '../assets/arrow.svg';
+import CatalogProducts from "../components/CatalogProducts";
 
 export default function Catalog() {
 
@@ -30,12 +31,13 @@ export default function Catalog() {
     }, [])
 
     return (
-        <div className="h-auto grid grid-cols-5">
-            <nav className="h-full border-r-2 border-white col-start-1 border-opacity-25 mt-32 list-none flex p-4 flex-col gap-20 text-xl items-center">
+        <div className="flex flex-col items-center">
+            <h1 className="pt-32 pb-10 text-4xl text-gray-300">ALL OUR <span className="bg-white bg-opacity-10">PRODUCTS</span></h1>
+            <nav className="h-1/2 lg:h-full list-none flex p-4 pb-8 gap-20 text-xl items-center justify-center border-b-2 border-white border-opacity-10 w-11/12 md:w-5/6 lg:w-3/4">
                 <li>
                     <Link 
                         to='/catalog/telescopes' 
-                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
+                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-2 after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-[2px] after:bg-white after:opacity-35"
                     >
                         Telescopes
                     </Link>
@@ -43,7 +45,7 @@ export default function Catalog() {
                 <li>
                     <Link 
                         to='/catalog/binoculars'
-                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
+                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-2 after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-[2px] after:bg-white after:opacity-35"
                     >
                         Binoculars
                     </Link>
@@ -51,13 +53,13 @@ export default function Catalog() {
                 <li>
                     <Link 
                         to='/catalog/accessories'
-                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-full after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-1 after:bg-white after:opacity-35"
+                        className="relative pt-1 px-1 after:transition-all after:duration-150 hover:after:h-2 after:absolute after:-bottom-[4px] after:left-0 after:w-full after:h-[2px] after:bg-white after:opacity-35"
                     >
                         Accessories
                     </Link>
                 </li>
             </nav>
-            <section className="mt-32 flex flex-col justify-start px-5 col-span-4">
+            <section className="flex flex-col justify-start px-5 pt-5 w-11/12 md:w-5/6 lg:w-3/4 mx-auto">
                 {
                     loading ?
                         <div className="h-screen w-full flex justify-center items-center">
@@ -65,72 +67,9 @@ export default function Catalog() {
                         </div>
                     :
                     <>
-                        <div className="w-full">
-                            <h3 className="text-3xl font-semibold">Telescopes</h3>
-                            <div className="w-full h-[1px] bg-white bg-opacity-25 mt-2" />
-                            <div className="flex h-[600px] justify-evenly items-center">
-                    
-                                {
-                                    telescopes.map((telescope) => {
-                                        return (
-                                            <Product key={telescope._id} id={telescope._id} product={telescope.category} price={telescope.price} srcImage={telescope.images[0]} name={telescope.name} />
-                                        )
-                                    })
-                                }
-                                <Link
-                                    to='/catalog/telescopes'
-                                    className='text-xl animate-fade flex items-end hover:text-gray-500'
-                                >
-                                    Show more
-                                    <img src={arrow} className="animate-pulse w-6 h-6" alt="arrow pointing to the right" />
-                                </Link>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="w-full">
-                                <h3 className="text-3xl font-semibold">Binoculars</h3>
-                                <div className="w-full h-[1px] bg-white bg-opacity-25 mt-2" />
-                                <div className="flex h-[600px] justify-evenly items-center">
-                                    {
-                                        binoculars.map((binocular) => {
-                                            return (
-                                                <Product key={binocular._id} id={binocular._id} product={binocular.category} price={binocular.price} srcImage={binocular.images[0]} name={binocular.name} />
-                                            )
-                                        })
-                                    }
-                                    <Link 
-                                        to='/catalog/binoculars'
-                                        className='text-xl animate-fade flex items-end hover:text-gray-500'
-                                    >
-                                        Show more
-                                        <img src={arrow} className="animate-pulse w-6 h-6" alt='arrow pointing to the right' />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="w-full">
-                                <h3 className="text-3xl font-semibold">Accessories</h3>
-                                <div className="w-full h-[1px] bg-white bg-opacity-25 mt-2" />
-                                <div className="flex h-[500px] justify-evenly items-center">
-
-                                    {
-                                        accessories.map((accessorie, i) => {
-                                            return (
-                                                <Product key={accessorie._id} id={accessorie._id} product={accessorie.category} price={accessorie.price} srcImage={accessorie.images[0]} name={accessorie.name} />
-                                            )
-                                        })
-                                    }
-                                    <Link 
-                                        to='/catalog/accessories'
-                                        className='text-xl animate-fade flex items-center hover:text-gray-500'
-                                    >
-                                        Show more
-                                        <img src={arrow} className="animate-pulse w-6 h-6" alt='arrow pointing to the right' />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        <CatalogProducts products={telescopes} />
+                        <CatalogProducts products={binoculars} />
+                        <CatalogProducts products={accessories} />
                     </>
                 }
             </section>

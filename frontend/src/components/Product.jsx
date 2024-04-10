@@ -5,7 +5,7 @@ export default function Product({ product, price = null, id = null, srcImage, na
     return (
         <Link
             to={id ? `/catalog/${product}/${id}` : `/catalog/${product}`}
-            className={`animate-fade h-5/6 w-72 overflow-hidden flex flex-col justify-center border-2 border-white border-opacity-25 transition-colors duration-200 ${price ?'pt-2 pb-1':'pt-1'} ${id ? 'hover:bg-white hover:bg-opacity-15' : ''}`}
+            className={`animate-fade h-[500px] w-72 overflow-hidden flex flex-col justify-center border-2 border-white border-opacity-25 transition-colors duration-200 ${price ?'pt-2 pb-1':'pt-1'} ${id ? 'hover:bg-white hover:bg-opacity-15' : ''}`}
         >
             <img 
                 src={srcImage ? srcImage : `/src/assets/products/${product}.png`}
